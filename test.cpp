@@ -17,9 +17,25 @@ namespace
 
 	void check_remove()
 	{
-		linked_list<int> l{2, 1, 2, 3, 4, 2, 5, 1, 2};
-		utility::remove(l, 2);
-		assert((l == linked_list<int>{1, 3, 4, 5, 1}));
+		linked_list<int> l1{2, 1, 2, 3, 4, 2, 5, 1, 2};
+		utility::remove(l1, 2);
+		assert((l1 == linked_list<int>{1, 3, 4, 5, 1}));
+		linked_list<int> l2{2};
+		utility::remove(l2, 2);
+		assert((l2 == linked_list<int>()));
+		linked_list<int> l3{1, 2, 3, 2, 2, 1};
+		utility::remove(l3, 1);
+		assert((l3 == linked_list<int>{2, 3, 2, 2}));
+	}
+
+	void check_middle_element()
+	{
+		linked_list<int> l1{1, 2, 3, 4, 5};
+		assert((3 == utility::get_middle_element(l1)));
+		linked_list<int> l2{1, 2, 3, 4, 5, 6};
+		assert((3 == utility::get_middle_element(l2)));
+		linked_list<int> l3{1, 2, 3};
+		assert((2 == utility::get_middle_element(l3)));
 	}
 }
 
@@ -30,6 +46,7 @@ void run()
 {
 	check_reverse();
 	check_remove();
+	check_middle_element();
 }
 
 }

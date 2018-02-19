@@ -39,7 +39,7 @@ void remove(linked_list<T>& l, const T& k)
 {
 	auto root = l.get_root();
 	auto current = root;
-    Node<int>* prev = nullptr;
+    Node<T>* prev = nullptr;
     while (nullptr != current) {
         if (k == current->value) {
             if (nullptr == prev) {
@@ -53,6 +53,21 @@ void remove(linked_list<T>& l, const T& k)
         current = current->next;
     }
     l.set_root(root);
+}
+
+template <typename T>
+T get_middle_element(const linked_list<T>& l)
+{
+	auto single_step = l.get_root();
+	auto double_step = l.get_root();
+	while (true) {
+		if (nullptr == double_step->next || nullptr == double_step->next->next) {
+			break;
+		}
+		double_step = double_step->next->next;
+		single_step = single_step->next;
+	}
+	return single_step->value;
 }
 
 }

@@ -15,4 +15,8 @@ template <typename T>
 void remove(linked_list<T>& l, const T& k);
 
 }
+
+template <typename T>
+T get_middle_element(const linked_list<T>& l);
+
 #include "utility.h"
