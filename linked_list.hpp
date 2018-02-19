@@ -49,30 +49,29 @@ public:
 	linked_list& operator=(linked_list&&) = delete;
 
 public:
-	void print() const
+	Node<T>* get_root() const
 	{
-		auto node = m_root;
-		while (node) {
-			std::cout << node->value << " ";
-			node = node->next;
-		}
-		std::cout << std::endl;
+		return m_root;
 	}
 
-	void reverse()
+	void set_root(Node<T>* r)
 	{
-		if (0 == m_root) {
-			return;
+		m_root = r;
+	}
+
+public:
+	bool operator==(const linked_list& l) const
+	{
+		auto node = m_root;
+		auto lnode = l.m_root;
+		while (nullptr != node && nullptr != lnode) {
+			if (node->value != lnode->value) {
+				return false;
+			}
+			node = node->next;
+			lnode = lnode->next;
 		}
-		Node<T>* prev = nullptr;
-		Node<T>* next = nullptr;
-		while (m_root) {
-			next = m_root->next;
-			m_root->next = prev;
-			prev = m_root;
-			m_root = next;
-		}
-		m_root = prev;
+		return node == lnode; // == nullptr
 	}
 
 private:
