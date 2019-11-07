@@ -17,6 +17,9 @@ void remove(linked_list<T>& l, const T& k);
 template <typename T>
 T get_middle_element(const linked_list<T>& l);
 
+template <typename T>
+T get_k_to_last(const linked_list<T>& l, int k);
+
 }
 
 #include "utility.h"
